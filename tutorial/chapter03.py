@@ -80,7 +80,7 @@ class CityInfo(BaseModel):
     name: str = Field(..., example="Beijing")  # example是注解的作用，值不会被验证
     country: str
     country_code: str = None  # 给一个默认值
-    country_population: int = Field(default=800, title="人口数量", description="国家的人口数量", ge=800)
+    country_population: int = Field(default=800, title="人口数量", description="国家的人口数量", ge=800) # description详细描述
 
     class Config:
         schema_extra = {
@@ -107,7 +107,7 @@ def mix_city_info(
     name: str,
     city01: CityInfo,
     city02: CityInfo,  # Body可以是多个的
-    confirmed: int = Query(ge=0, description="确诊数", default=0),
+    confirmed: int = Query(ge=0, description="确诊数", default=0),  #查询参数用query
     death: int = Query(ge=0, description="死亡数", default=0),
 ):
     if name == "Shanghai":
